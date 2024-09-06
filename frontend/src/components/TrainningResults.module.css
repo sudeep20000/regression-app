@@ -1,0 +1,20 @@
+.results_container {
+  margin-top: 45px;
+  height: 90vh;
+  width: 55vw;
+  overflow: auto;
+  overflow-y: auto;
+}
+
+.text_container pre {
+  font-size: 15px;
+}
+
+img {
+  width: 100%;
+}
+
+.images {
+  overflow: hidden;
+  overflow-y: auto;
+}

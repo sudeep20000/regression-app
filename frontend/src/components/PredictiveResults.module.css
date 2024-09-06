@@ -1,0 +1,13 @@
+.results_container {
+  margin-top: 45px;
+  height: 90vh;
+  width: 55vw;
+}
+
+.para {
+  font-size: 25px;
+}
+
+.para span {
+  font-weight: bold;
+}

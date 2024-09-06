@@ -1,0 +1,47 @@
+.app {
+  display: flex;
+  justify-content: space-between;
+  max-width: 97%;
+  margin: 0 auto;
+  height: 100svh;
+}
+
+.button_container {
+  display: flex;
+  gap: 20px;
+}
+
+.training {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #7d8188;
+  color: rgb(43, 40, 40);
+  font-weight: bold;
+  font-size: 20px;
+  width: 200px;
+}
+
+.predictive {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #7d8188;
+  color: rgb(43, 40, 40);
+  font-weight: bold;
+  font-size: 20px;
+  width: 200px;
+}
+
+.form_container {
+  width: 43%;
+  margin-top: 50px;
+}
+
+.result_container {
+  width: 57%;
+}
+
+select {
+  margin-top: 20px;
+}

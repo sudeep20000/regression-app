@@ -1,0 +1,45 @@
+.form_container {
+  width: 45vw;
+}
+
+.predictionTab {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.form {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 20px;
+}
+
+input {
+  width: 200px;
+  font-size: 20px;
+}
+
+select {
+  font-size: 20px;
+}
+
+option {
+  font-size: 20px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #5075c5;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  width: 200px;
+}
