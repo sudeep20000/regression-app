@@ -1,10 +1,18 @@
 import styles from "./PredictiveResults.module.css";
 
-const PredictiveResults = ({ resultData }) => {
+const fixKeyName = (str) =>
+  str
+    .split("_")
+    .map((word) => word.toUpperCase())
+    .join(" ");
+
+const PredictiveResults = ({ tab, resultData }) => {
+  if (resultData === null) return;
+
   return (
     <div className={styles.result_container}>
-      {resultData.R && (
-        <>
+      {tab === "single" && !Array.isArray(resultData) && (
+        <div className={styles.singleDataResult}>
           <p className={styles.para}>
             <span>Rotor Radius :</span> {resultData.R} (m)
           </p>
@@ -29,7 +37,21 @@ const PredictiveResults = ({ resultData }) => {
           <p className={styles.para}>
             <span>The Power :</span> {resultData.mech_power}
           </p>
-        </>
+        </div>
+      )}
+      {tab === "multiple" && Array.isArray(resultData) && (
+        <div className={styles.multiDataResult}>
+          {resultData.map((obj, i) => (
+            <div key={i} className={styles.data_div}>
+              {Object.entries(obj).map((ele, i) => (
+                <div key={i} className={styles.data_property}>
+                  <span className={styles.key_name}>{fixKeyName(ele[0])}:</span>
+                  <span className={styles.value_name}>{ele[1]}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

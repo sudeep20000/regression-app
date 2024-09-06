@@ -11,3 +11,30 @@
 .para span {
   font-weight: bold;
 }
+
+.multiDataResult {
+  margin-top: 20px;
+  height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.data_div + .data_div {
+  margin-top: 20px;
+}
+
+.data_div {
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.key_name {
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.value_name {
+  font-size: 20px;
+}

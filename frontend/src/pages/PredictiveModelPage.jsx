@@ -4,7 +4,12 @@ import PredictiveResults from "../components/PredictiveResults";
 import styles from "./PredictiveModelPage.module.css";
 
 const PredictiveModelPage = () => {
-  const [resultData, setResultData] = useState({});
+  const [tab, setTab] = useState("single");
+  const [resultData, setResultData] = useState(null);
+
+  const handelSetTab = (value) => {
+    setTab(value);
+  };
 
   const handelResultData = (data) => {
     setResultData(data);
@@ -12,8 +17,12 @@ const PredictiveModelPage = () => {
 
   return (
     <div className={styles.predictiveModelPage}>
-      <PredictiveModelForm handelResultData={handelResultData} />
-      <PredictiveResults resultData={resultData} />
+      <PredictiveModelForm
+        handelResultData={handelResultData}
+        tab={tab}
+        handelSetTab={handelSetTab}
+      />
+      <PredictiveResults tab={tab} resultData={resultData} />
     </div>
   );
 };

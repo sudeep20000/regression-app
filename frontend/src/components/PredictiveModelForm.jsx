@@ -4,9 +4,8 @@ import toast from "react-hot-toast";
 import BASE_URL from "../../service/helper";
 import styles from "./PredictiveModelForm.module.css";
 
-const PredictiveModelForm = ({ handelResultData }) => {
+const PredictiveModelForm = ({ handelResultData, tab, handelSetTab }) => {
   const [isLoading, setIsloading] = useState(false);
-  const [tab, setTab] = useState("single");
   const [selectedDataset, setSelectedDataset] = useState(null);
   const [rotorRadius, setRotorRadius] = useState("");
   const [rpm, setRpm] = useState("");
@@ -87,7 +86,7 @@ const PredictiveModelForm = ({ handelResultData }) => {
       setIsloading(true);
       const loadingToastId = toast.loading("Please wait");
       const {
-        data: { msg },
+        data: { msg, resultData },
       } = await axios.post(
         `${BASE_URL}/api/run-predictive-multiple`,
         formData,
@@ -100,7 +99,7 @@ const PredictiveModelForm = ({ handelResultData }) => {
       );
       toast.dismiss(loadingToastId);
       toast.success(msg);
-      // handelResultData(valuesObj);
+      handelResultData(resultData);
     } catch (e) {
       toast.dismiss();
       if (e.code === "ECONNABORTED") {
@@ -116,8 +115,12 @@ const PredictiveModelForm = ({ handelResultData }) => {
   return (
     <div className={styles.form_container}>
       <div className={styles.predictionTab}>
-        <button onClick={() => setTab("single")}>Single data point</button>
-        <button onClick={() => setTab("multiple")}>Multiple data point</button>
+        <button onClick={() => handelSetTab("single")}>
+          Single data point
+        </button>
+        <button onClick={() => handelSetTab("multiple")}>
+          Multiple data point
+        </button>
       </div>
       {tab === "single" && (
         <form onSubmit={handleSubmitForSingle} className={styles.form}>
