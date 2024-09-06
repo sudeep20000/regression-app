@@ -7,6 +7,9 @@ require("dotenv").config();
 
 const apiRoute = require("./routes/api");
 
+const notFoundMiddleware = require("./middleware/not-found");
+const errorHandlerMiddleware = require("./middleware/error-handler");
+
 const app = express();
 
 app.use(cors());
@@ -18,6 +21,9 @@ app.use((req, res, next) => {
 
 app.use("/api", apiRoute);
 app.use("/outputs", express.static(path.join(__dirname, "outputs")));
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const PORT = process.env.PORT || 5000;
 
