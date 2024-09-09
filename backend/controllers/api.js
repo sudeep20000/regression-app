@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const xlsx = require("xlsx");
+const json2xls = require("json2xls");
 const { spawn } = require("child_process");
 const { StatusCodes } = require("http-status-codes");
 const {
@@ -272,6 +273,11 @@ const runPredictiveForMultiple = async (req, res) => {
     const outputFilePath = path.join(TEMP_DIR, "output_data.json");
     const outputData = fs.readFileSync(outputFilePath, "utf8");
     const resultData = JSON.parse(outputData);
+
+    const worksheet1 = xlsx.utils.json_to_sheet(resultData);
+    const workbook1 = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(workbook1, worksheet1, "Sheet1");
+    xlsx.writeFile(workbook1, "output.xlsx");
 
     res
       .status(StatusCodes.OK)
