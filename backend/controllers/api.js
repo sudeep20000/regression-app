@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const xlsx = require("xlsx");
-const json2xls = require("json2xls");
 const { spawn } = require("child_process");
 const { StatusCodes } = require("http-status-codes");
 const {
@@ -218,11 +217,12 @@ const runPredictiveForMultiple = async (req, res) => {
     const filteredData = data.map((item) => {
       return {
         location: item["Location"],
+        month: item["Month"],
         wind_velocity: parseFloat(item["Wind Speed (m/s)"].toFixed(2)),
         wind_direction: item["Wind Direction"],
         anguler_speed: parseFloat(W.toFixed(2)),
         rotor_radius: R,
-        roation_per_minute: N,
+        rpm: N,
         pitch_angle: 5,
       };
     });
