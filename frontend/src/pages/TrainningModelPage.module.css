@@ -1,7 +1,29 @@
-.trainningModelPage {
+.main {
+  height: 100vh;
+  width: 100vw;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trainningModelPage {
+  height: 95%;
+  width: 95%;
+  display: flex;
+  gap: 10px;
 }
 
 .form_container {
-  width: 45vw;
+  width: 45%;
+}
+
+.result_container {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.show_res_btn {
+  align-self: center;
 }

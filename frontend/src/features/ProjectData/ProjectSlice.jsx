@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "",
+  current_project: "",
+  projects: [],
 };
 
 const projectSlice = createSlice({
   name: "project",
   initialState,
   reducers: {
-    setProjectname(state, action) {
-      state.name = action.payload;
+    setCurrProjectname(state, action) {
+      state.current_project = action.payload;
     },
   },
 });
 
-export const { setProjectname } = projectSlice.actions;
+export const { setCurrProjectname } = projectSlice.actions;
 
 export default projectSlice.reducer;

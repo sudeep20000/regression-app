@@ -1,20 +1,19 @@
-.results_container {
-  margin-top: 45px;
-  height: 90vh;
-  width: 55vw;
-  overflow: auto;
+.text_res_container {
+  height: 87vh;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
-.text_container pre {
-  font-size: 15px;
+.text_res_container pre {
+  font-size: 13px;
+}
+
+.images_res_container {
+  height: 87vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 img {
   width: 100%;
-}
-
-.images {
-  overflow: hidden;
-  overflow-y: auto;
 }

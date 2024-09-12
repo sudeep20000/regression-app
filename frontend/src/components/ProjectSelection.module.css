@@ -1,0 +1,74 @@
+.project {
+  text-align: center;
+  margin: 50px;
+}
+
+.buttonGroup {
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.inputField {
+  margin-top: 20px;
+}
+
+.inputField input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.projectList {
+  margin-top: 20px;
+}
+
+.projectList ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.projectList li {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.continueButton {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.continueButton:hover {
+  background-color: #0b7dda;
+}
+
+.continueButtonDisabled {
+  background-color: #b0bec5;
+  cursor: not-allowed;
+}

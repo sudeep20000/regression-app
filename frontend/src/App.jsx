@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
 const DataPage = lazy(() => import("./pages/DataPage"));
 const TrainningModelPage = lazy(() => import("./pages/TrainningModelPage"));
@@ -19,6 +20,7 @@ const App = () => {
         <Suspense fallback={<SpinnerFullPage />}>
           <Routes>
             <Route index element={<HomePage />} />
+            <Route path="projects" element={<ProjectsPage />} />
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="data" element={<DataPage />} />
             <Route path="trainning-model" element={<TrainningModelPage />} />

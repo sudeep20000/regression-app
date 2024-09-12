@@ -5,6 +5,7 @@ const {
   runAnalysis,
   runPredictiveForSingle,
   runPredictiveForMultiple,
+  runAalytics,
 } = require("../controllers/api");
 
 const router = express.Router();
@@ -16,5 +17,7 @@ router.route("/run-predictive-single").post(runPredictiveForSingle);
 router
   .route("/run-predictive-multiple")
   .post(upload.single("selectedDataset"), runPredictiveForMultiple);
+
+router.route("/run-analytics").get(runAalytics);
 
 module.exports = router;

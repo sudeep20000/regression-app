@@ -3,14 +3,16 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import BASE_URL from "../../service/helper";
 import styles from "./TrainningModelForm.module.css";
+import { useSelector } from "react-redux";
 
 const TrainningModelForm = ({ handelResultData }) => {
   const [isLoading, setIsloading] = useState(false);
-  const [projectName, setProjectName] = useState("");
   const [selectedDataset, setSelectedDataset] = useState("");
   const [numVariables, setNumVariables] = useState("");
   const [independentVars, setIndependentVars] = useState([]);
   const [dependentVar, setDependentVar] = useState("");
+
+  const { current_project } = useSelector((store) => store.project);
 
   const handleNumVariablesChange = (e) => {
     const value = parseInt(e.target.value);
@@ -28,14 +30,12 @@ const TrainningModelForm = ({ handelResultData }) => {
     e.preventDefault();
 
     const formData = {
-      projectName,
       selectedDataset,
       independentVars,
       dependentVar,
     };
 
     if (
-      !formData.projectName ||
       !formData.selectedDataset ||
       !formData.independentVars.length ||
       !formData.dependentVar
@@ -62,21 +62,16 @@ const TrainningModelForm = ({ handelResultData }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <h1>Training model</h1>
-      <div>
-        <label>Project Name:</label>
-        <input
-          type="text"
-          value={projectName}
-          onChange={(e) => setProjectName(e.target.value)}
-          disabled={isLoading}
-        />
-      </div>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <span className={styles.project_name}>
+        Project Name: {current_project}
+      </span>
+      <span className={styles.heading}>Training model</span>
 
-      <div>
-        <label>Select Dataset:</label>
+      <div className={styles.dataset}>
+        <label htmlFor="dataset">Select Dataset:</label>
         <select
+          id="dataset"
           value={selectedDataset}
           onChange={(e) => setSelectedDataset(e.target.value)}
           disabled={isLoading}
@@ -87,9 +82,12 @@ const TrainningModelForm = ({ handelResultData }) => {
         </select>
       </div>
 
-      <div>
-        <label>Number of Independent Variables:</label>
+      <div className={styles.independent_num}>
+        <label htmlFor="independent_num">
+          Number of Independent Variables:
+        </label>
         <input
+          id="independent_num"
           type="number"
           value={numVariables}
           onChange={handleNumVariablesChange}
@@ -97,9 +95,12 @@ const TrainningModelForm = ({ handelResultData }) => {
         />
       </div>
       {independentVars.map((varName, index) => (
-        <div key={index}>
-          <label>Select Independent Variable X{index + 1}:</label>
+        <div className={styles.independent_var} key={index}>
+          <label htmlFor={`independent_var${index}`}>
+            Select Independent Variable X{index + 1}:
+          </label>
           <select
+            id={`independent_var${index}`}
             value={varName}
             onChange={(e) => handleIndependentVarChange(index, e.target.value)}
             disabled={isLoading}
@@ -122,9 +123,10 @@ const TrainningModelForm = ({ handelResultData }) => {
         </div>
       ))}
 
-      <div>
-        <label>Dependent Variable Y:</label>
+      <div className={styles.dependent_var}>
+        <label htmlFor="dependent_var">Dependent Variable Y:</label>
         <select
+          id="dependent_var"
           value={dependentVar}
           onChange={(e) => setDependentVar(e.target.value)}
           disabled={isLoading}
@@ -144,7 +146,11 @@ const TrainningModelForm = ({ handelResultData }) => {
         </select>
       </div>
 
-      <button type="submit" disabled={isLoading}>
+      <button
+        type="submit"
+        disabled={isLoading}
+        className={styles.training_submit_btn}
+      >
         {isLoading ? "Loading..." : "Run"}
       </button>
     </form>

@@ -1,0 +1,44 @@
+.home {
+  height: 95vh;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.content_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.project_name {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.get_start_btn {
+  color: white;
+  background-color: #5075c5;
+  font-size: 1rem;
+  padding: 1em;
+  border-radius: 35px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.get_start_btn:hover {
+  background-color: #5075c5;
+  color: black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.09);
+}
